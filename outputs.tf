@@ -1,3 +1,7 @@
+output "arc_resource_bridge_appliances_id" {
+  description = "Map of id values across all arc_resource_bridge_appliances, keyed the same as var.arc_resource_bridge_appliances"
+  value       = { for k, v in azurerm_arc_resource_bridge_appliance.arc_resource_bridge_appliances : k => v.id }
+}
 output "arc_resource_bridge_appliances_distro" {
   description = "Map of distro values across all arc_resource_bridge_appliances, keyed the same as var.arc_resource_bridge_appliances"
   value       = { for k, v in azurerm_arc_resource_bridge_appliance.arc_resource_bridge_appliances : k => v.distro }
