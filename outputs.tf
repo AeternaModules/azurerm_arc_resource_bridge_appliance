@@ -8,7 +8,7 @@ output "arc_resource_bridge_appliances_distro" {
 }
 output "arc_resource_bridge_appliances_identity" {
   description = "Map of identity values across all arc_resource_bridge_appliances, keyed the same as var.arc_resource_bridge_appliances"
-  value       = { for k, v in azurerm_arc_resource_bridge_appliance.arc_resource_bridge_appliances : k => v.identity if v.identity != null && length(v.identity) > 0 }
+  value       = { for k, v in azurerm_arc_resource_bridge_appliance.arc_resource_bridge_appliances : k => one(v.identity) if v.identity != null && length(v.identity) > 0 }
 }
 output "arc_resource_bridge_appliances_infrastructure_provider" {
   description = "Map of infrastructure_provider values across all arc_resource_bridge_appliances, keyed the same as var.arc_resource_bridge_appliances"
